@@ -36,7 +36,7 @@ def dividir(a, b):
     return a / b
 
 3. Enlace público a GitHub PagesExplicación del workflow de publicación:
-https://rgarvel709.github.io/Despliegue/
+https://github.com/rgarvel709/Despliegue
 
 4. Explicación del workflow de publicación
 name: CI con AutoCommit
@@ -131,5 +131,6 @@ En el apartado 3 incluyo el enlace a la documentación publicada. En el apartado
 h) Justifica por qué el workflow implementa CI/CD. ¿Qué evento dispara automáticamente la generación y publicación de la documentación? ¿Por qué esto es despliegue continuo?
 
 El workflow implementa CI/CD porque cada vez que se hace push a main se genera y publica automáticamente la documentación. Asi la documentación siempre está actualizada sin intervención manual.
+
 
 
