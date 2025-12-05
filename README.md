@@ -101,19 +101,35 @@ python -m pdoc main.py -o docs
 
 7. Cuestionario de evidencias
 a) ¿Qué herramienta o generador utilizaste para crear la documentación HTML?
+
 Utilicé pdoc para Python, que genera documentación HTML a partir de los docstrings.
+
 b) Muestra un fragmento del código con comentarios/docstrings estructurados. ¿Qué estilo has utilizado?
+
 He usado Google Style docstrings, con las etiquetas Args:, Returns: y Raises:. Ejemplo arriba.
+
 c) ¿Qué configuración del workflow y del repositorio utilizaste para publicar la documentación en GitHub Pages? Explica los pasos clave.
+
 El workflow se ejecuta en cada push a main, instala pdoc, genera la documentación y la publica con actions/deploy-pages. En Settings, seleccioné gh-pages como fuente para GitHub Pages.
+
 d) ¿Cómo facilita GitHub Pages compartir documentación actualizada con el equipo y usuarios externos? ¿Ventajas frente a solo tener los archivos HTML en el repo?
+
 GitHub Pages permite que la documentación esté accesible y actualizada para todo el equipo y usuarios externos, sin necesidad de descargar o navegar por carpetas. Es mucho más cómodo y profesional.
+
 e) ¿Son claros y descriptivos los mensajes de commit? Justifícalo.
+
 Si cada commit indica en imperativo la acción realizada, facilitando el seguimiento y la colaboración.
+
 f) ¿Cómo garantizas que la documentación en GitHub Pages es accesible públicamente pero el código fuente solo es accesible para personal autorizado?
+
 La documentación es pública en GitHub Pages, pero el código puede estar en un repositorio privado. Así, sólo quienes tengan acceso al repo ven el código pero la documentación es accesible para todos.
+
 g) ¿Dónde explicas cómo acceder a la documentación publicada en GitHub Pages y dónde detallas las herramientas y comandos usados para generarla?
+
 En el apartado 3 incluyo el enlace a la documentación publicada. En el apartado 1 y 6 detallo la herramienta y los comandos usados.
+
 h) Justifica por qué el workflow implementa CI/CD. ¿Qué evento dispara automáticamente la generación y publicación de la documentación? ¿Por qué esto es despliegue continuo?
+
 El workflow implementa CI/CD porque cada vez que se hace push a main se genera y publica automáticamente la documentación. Asi la documentación siempre está actualizada sin intervención manual.
+
 
