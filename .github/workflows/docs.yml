@@ -2,55 +2,36 @@ name: Generar Documentacion
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ main ]
   workflow_dispatch:
-
-permissions:
-  contents: write
 
 jobs:
   build-docs:
     runs-on: ubuntu-latest
+
     steps:
-      # 1. Descargar el código
-      - name: Descargar codigo
-        uses: actions/checkout@v4
+    - name: Checkout del codigo
+      uses: actions/checkout@v4
 
-      # 2. Configurar Python
-      - name: Configurar Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
+    - name: Configurar Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
 
-      # 3. Instalar la herramienta de documentación (pdoc)
-      - name: Instalar pdoc
-        run: pip install pdoc
+    - name: Instalar pdoc
+      run: |
+        python -m pip install --upgrade pip
+        pip install pdoc
 
-      # 4. Crear las carpetas de destino
-      - name: Crear carpetas
-        run: mkdir -p docs/html docs/markdown
+    - name: Crear carpetas
+      run: mkdir -p docs/html docs/markdown
 
-      # 5. Generar Formato 1: HTML
-      - name: Generar HTML
-        run: pdoc --html -o docs/html src/geometria.py --force
+    - name: Generar HTML
+      run: pdoc -o docs/html src/geometria.py
 
-      # 6. Generar Formato 2: Markdown (Crea un reporte rápido)
-      - name: Generar Markdown
-        run: |
-          echo "# Reporte de Documentación" > docs/markdown/report.md
-          echo "Generado el: $(date)" >> docs/markdown/report.md
-          echo "Módulo analizado: geometria.py" >> docs/markdown/report.md
+    - name: Subir artefacto
+      uses: actions/upload-artifact@v4
+      with:
+        name: documentacion-html
+        path: docs/html/
 
-      # 7. Subir artefacto descargable
-      - name: Subir artefacto
-        uses: actions/upload-artifact@v4
-        with:
-          name: documentacion-tecnica
-          path: docs/
-
-      # 8. Guardar todo en el repositorio automáticamente
-      - name: Guardar en el repositorio
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "docs: generar documentacion automatica HTML y Markdown"
-          file_pattern: "docs/**"
